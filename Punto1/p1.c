@@ -14,12 +14,12 @@ int main(int argc, char* argv[])
     if (argc > 2) 
     {
         printf ("El programa solo acepta un parametro \n");
-        return 1;
+        return -1;
     }
     else if (argc < 2)
     {
         printf ("El programa requiere de un parametro \n");
-        return 1;
+        return -1;
     }
 
     char* fileName = argv[1];
@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
     if (stat(argv[1], &stat_struct) < 0)
     {
         printf ("Error leyendo el archivo \n");
-        return 1;
+        return -1;
     }
 
     if (S_ISDIR(stat_struct.st_mode)) 

@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     if (argc > 2)
     {
         printf("El programa solo puede recibir un parametro como maximo \n");
-        return 0;
+        return -1;
     }
 
     switch (argc)
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
         if (strcmp(argv[1],"-l") != 0)
         {
             printf ("El programa solo puede aceptar como parametro -l o ningun parametro \n");
-            return 0;
+            return -1;
         }
         flag = 1;
         break;
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
                 if (stat(structDirent->d_name, &structStat) < 0)
                 {
                     printf ("Error leyendo el archivo \n");
-                    return 1;
+                    return -1;
                 }
                 struct passwd* pwd = getpwuid(structStat.st_uid);
                 struct group* grp = getgrgid(structStat.st_gid);
